@@ -6,8 +6,6 @@ class Config():
 	def __init__(self, json_file):
 		self.json_file = json_file
 		self.ebay_api_app_id = None
-		self.finding_base_url = None
-		self.service_version = None
 		self.search_profile = {}
 		self.twitter_consumer_key = None
 		self.twitter_consumer_secret = None
@@ -21,10 +19,8 @@ class Config():
 
 		with open(self.json_file, mode='r', encoding='utf-8') as f:
 			config_dict = json.load(f)
-			
-		self.ebay_api_app_id = config_dict['ebay_api_config']['app_id']
-		self.finding_base_url = config_dict['ebay_api_config']['finding_base_url']
-		self.service_version = config_dict['ebay_api_config']['service_version']
+
+		self.ebay_api_app_id = config_dict['ebay_api_app_id']
 		self.search_profile = config_dict['search_profile']
 		self.twitter_consumer_key = config_dict['twitter_api_config']['consumer_key']
 		self.twitter_consumer_secret = config_dict['twitter_api_config']['consumer_secret']
