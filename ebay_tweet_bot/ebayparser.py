@@ -52,4 +52,8 @@ class EbayParser():
 	def parse_response(self):
 		listings = self.response.json()['findItemsAdvancedResponse'][0]['searchResult'][0]['item']
 		for listing in listings:
-			pass
+			title = listing['title'][0]
+			price = listing['sellingStatus'][0]['convertedCurrentPrice'][0]['__value__']
+			image_url = listing['pictureURLLarge'][0]
+			self.results.append((title, price, image_url))
+
