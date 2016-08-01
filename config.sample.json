@@ -1,35 +1,35 @@
 {
-	"ebay_api_config": {
-		"app_id": "$EBAY_API_APP_ID",
-		"finding_base_url": "http://svcs.ebay.com/services/search/FindingService/v1",
-		"service_version": "1.0.0"
-	},
-	"search_profile": {
-		"category_ids": [
-			"1",
-			"2",
-			"3"
-		],
-		"search_terms": [
-			{
-				"keywords": "all the keywords must match",
-				"clause": "all"
-			},
-			{
-				"keywords": "any of the keywords can match",
-				"clause": "any"
-			},
-			{
-				"keywords": "none of the keywords can match",
-				"clause": "not"
-			}
-		]
-	},
-	"twitter_api_config": {
-		"consumer_key": "$TWITTER_CONSUMER_KEY",
-		"consumer_secret": "$TWITTER_CONSUMER_SECRET",
-		"access_token_key": "$TWITTER_ACCESS_TOKEN_KEY",
-		"access_token_secret": "$TWITTER_ACCESS_TOKEN_SECRET"
-	},
-	"last_run": "ISO 8601 datetime in UTC"
+    "ebay_api_config": {
+        "app_id": "$EBAY_API_APP_ID",
+        "finding_base_url": "http://svcs.ebay.com/services/search/FindingService/v1",
+        "service_version": "1.0.0"
+    },
+    "last_run": "ISO 8601 datetime in UTC",
+    "search_profile": {
+        "category_ids": [
+            "1",
+            "2",
+            "3"
+        ],
+        "search_terms": [
+            {
+                "clause": "all",
+                "keywords": "all the keywords must match"
+            },
+            {
+                "clause": "any",
+                "keywords": "any of the keywords can match"
+            },
+            {
+                "clause": "not",
+                "keywords": "none of the keywords can match"
+            }
+        ]
+    },
+    "twitter_api_config": {
+        "access_token_key": "$TWITTER_ACCESS_TOKEN_KEY",
+        "access_token_secret": "$TWITTER_ACCESS_TOKEN_SECRET",
+        "consumer_key": "$TWITTER_CONSUMER_KEY",
+        "consumer_secret": "$TWITTER_CONSUMER_SECRET"
+    }
 }
