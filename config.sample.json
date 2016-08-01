@@ -2,10 +2,15 @@
     "ebay_api_app_id": "$EBAY_API_APP_ID",
     "last_run": "ISO 8601 datetime in UTC",
     "search_profile": {
-        "categories": [
-            "1",
-            "2",
-            "3"
+        "category": "139973",
+        "filters": [
+            {
+                "name": "MinPrice",
+                "value": "100"
+            }
+        ],
+        "output_selectors": [
+            "PictureURLLarge"
         ],
         "search_terms": [
             {
@@ -20,15 +25,6 @@
                 "clause": "not",
                 "keywords": "none of the keywords can match"
             }
-        ],
-        "filters": [
-        	{
-        		"name": "MinPrice",
-        		"value": "100"
-        	}
-        ],
-        "output_selectors": [
-        	"PictureURLLarge"
         ]
     },
     "twitter_api_config": {
