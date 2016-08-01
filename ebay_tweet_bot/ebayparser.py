@@ -20,7 +20,7 @@ class EbayParser():
 		self.search_profile = config.search_profile
 		self.start_time_from = config.last_run
 		self.response = None
-		self.results = []
+		self.listings = []
 
 	def make_payload(self):
 		filters = self.search_profile['filters']
@@ -50,10 +50,10 @@ class EbayParser():
 		self.response = requests.get(self.FINDING_BASE_URL, params=self.payload)
 
 	def parse_response(self):
-		listings = self.response.json()['findItemsAdvancedResponse'][0]['searchResult'][0]['item']
-		for listing in listings:
-			title = listing['title'][0]
-			price = listing['sellingStatus'][0]['convertedCurrentPrice'][0]['__value__']
-			image_url = listing['pictureURLLarge'][0]
-			self.results.append((title, price, image_url))
+		raw_listings = self.response.json()['findItemsAdvancedResponse'][0]['searchResult'][0]['item']
+		for raw_listing in raw_listings:
+			title = raw_listing['title'][0]
+			price = raw_listing['sellingStatus'][0]['convertedCurrentPrice'][0]['__value__']
+			image_url = raw_listing['pictureURLLarge'][0]
+			self.listings.append((title, price, image_url))
 
