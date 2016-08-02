@@ -10,9 +10,12 @@ def main():
 	tweeter = Tweeter(	config.twitter_consumer_key,
 						config.twitter_consumer_secret,
 						config.twitter_access_token_key,
-						config.twitter_access_token_secret)
+						config.twitter_access_token_secret,
+						config.bitly_access_token)
 	for listing in parser.listings:
 		tweeter.send_tweet(listing)
+	config.set_last_run()
+	config.save()
 
 if __name__ == '__main__':
 	main()

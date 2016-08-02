@@ -11,10 +11,11 @@ class Config():
 		self.twitter_consumer_secret = None
 		self.twitter_access_token_key = None
 		self.twitter_access_token_secret = None
+		self.bitly_access_token = None
 		self.last_run = None
-		self.load_config()
+		self.load()
 
-	def load_config(self):
+	def load(self):
 		config_dict = {}
 
 		with open(self.json_file, mode='r', encoding='utf-8') as f:
@@ -26,18 +27,15 @@ class Config():
 		self.twitter_consumer_secret = config_dict['twitter_api_config']['consumer_secret']
 		self.twitter_access_token_key = config_dict['twitter_api_config']['access_token_key']
 		self.twitter_access_token_secret = config_dict['twitter_api_config']['access_token_secret']
+		self.bitly_access_token = config_dict['bitly_access_token']
 		self.last_run = config_dict['last_run']
 
 	def set_last_run(self):
 		self.last_run = datetime.utcnow().isoformat()
 
-	def save_config(self):
+	def save(self):
 		config_dict = {
-			'ebay_api_config': {
-				'app_id': self.ebay_api_app_id,
-				'finding_base_url': self.finding_base_url,
-				'service_version': self.service_version
-			},
+			'ebay_api_app_id': self.ebay_api_app_id,
 			'search_profile': self.search_profile,
 			'twitter_api_config': {
 				'consumer_key': self.twitter_consumer_key,
@@ -45,7 +43,8 @@ class Config():
 				'access_token_key': self.twitter_access_token_key,
 				'access_token_secret': self.twitter_access_token_secret
 			},
-			'last_run': self.last_run
+			'last_run': self.last_run,
+			'bitly_access_token': self.bitly_access_token
 		}
 
 		with open(self.json_file, mode='w', encoding='utf-8') as f:

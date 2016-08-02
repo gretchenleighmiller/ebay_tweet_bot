@@ -9,7 +9,7 @@ class EbayParser():
 	RESPONSE_FORMAT = 'JSON'
 
 	def __init__(self, config):
-		
+		# using a list of tuples instead of a dict because eBay API is VERY sensitive about parameter order
 		self.payload = [
 			('OPERATION-NAME', self.OPERATION_NAME),
 			('SERVICE-VERISON', self.SERVICE_VERSION),
@@ -28,6 +28,7 @@ class EbayParser():
 		output_selectors = self.search_profile['output_selectors']
 		keywords = ''
 		self.payload.append(('categoryId', self.search_profile['category']))
+		# multiple itemFilter parameters require a 0-indexed counter
 		self.payload.append(('itemFilter(0).name', 'StartTimeFrom'))
 		self.payload.append(('itemFilter(0).value', self.start_time_from))
 		for i, item_filter in enumerate(filters):
@@ -55,5 +56,6 @@ class EbayParser():
 			title = raw_listing['title'][0]
 			price = raw_listing['sellingStatus'][0]['convertedCurrentPrice'][0]['__value__']
 			image_url = raw_listing['pictureURLLarge'][0]
-			self.listings.append((title, price, image_url))
+			item_url = raw_listing['viewItemURL'][0]
+			self.listings.append((title, price, image_url, item_url))
 
