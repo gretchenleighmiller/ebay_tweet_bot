@@ -7,6 +7,7 @@ def main():
 	parser.make_payload()
 	parser.make_request()
 	parser.parse_response()
+	if len(parser.listings)!=0:
 	tweeter = Tweeter(	config.twitter_consumer_key,
 						config.twitter_consumer_secret,
 						config.twitter_access_token_key,

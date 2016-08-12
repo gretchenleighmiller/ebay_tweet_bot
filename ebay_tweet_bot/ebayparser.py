@@ -51,7 +51,10 @@ class EbayParser():
 		self.response = requests.get(self.FINDING_BASE_URL, params=self.payload)
 
 	def parse_response(self):
-		raw_listings = self.response.json()['findItemsAdvancedResponse'][0]['searchResult'][0]['item']
+		if self.response.json()['findItemsAdvancedResponse'][0]['searchResult'][0]['@count']!='0':
+			raw_listings = self.response.json()['findItemsAdvancedResponse'][0]['searchResult'][0]['item']
+		else:
+			return
 		for raw_listing in raw_listings:
 			title = raw_listing['title'][0]
 			price = raw_listing['sellingStatus'][0]['convertedCurrentPrice'][0]['__value__']
