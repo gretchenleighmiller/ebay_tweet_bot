@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
-import logging
+import logging, sys, os
 from ebay_tweet_bot import Config, EbayParser, Tweeter
 
 def main():
-	logging.basicConfig(filename='ebay_twitterbot.log', level=logging.INFO, format='%(asctime)s %(levelname)s:%(message)s')
+	# get full file paths in case script is called from another dir
+	dir_path = os.path.dirname(sys.argv[0])
+	log_file_path = os.path.join(dir_path, 'ebay_twitterbot.log')
+	config_file_path = os.path.join(dir_path, 'config.json')
+	logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s %(levelname)s:%(message)s')
+	# make requests logging less noisy
 	logging.getLogger("requests").setLevel(logging.WARNING)
 	logging.info('Starting')
 	logging.info('Loading config from config.json')
-	config = Config('config.json')
+	config = Config(config_file_path)
 	logging.info('Constructing eBay API parser from config')
 	parser = EbayParser(config)
 	parser.make_payload()
