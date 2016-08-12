@@ -1,22 +1,38 @@
 # -*- coding: utf-8 -*-
+import logging
 from ebay_tweet_bot import Config, EbayParser, Tweeter
 
 def main():
+	logging.basicConfig(filename='ebay_twitterbot.log', level=logging.INFO, format='%(asctime)s %(levelname)s:%(message)s')
+	logging.getLogger("requests").setLevel(logging.WARNING)
+	logging.info('Starting')
+	logging.info('Loading config from config.json')
 	config = Config('config.json')
+	logging.info('Constructing eBay API parser from config')
 	parser = EbayParser(config)
 	parser.make_payload()
+	logging.info('Retrieving and parsing results')
 	parser.make_request()
 	parser.parse_response()
 	if len(parser.listings)!=0:
-	tweeter = Tweeter(	config.twitter_consumer_key,
-						config.twitter_consumer_secret,
-						config.twitter_access_token_key,
-						config.twitter_access_token_secret,
-						config.bitly_access_token)
-	for listing in parser.listings:
-		tweeter.send_tweet(listing)
+		logging.info('Found %d results', len(parser.listings))
+		logging.info('Constructing Twitter API object')
+		tweeter = Tweeter(	config.twitter_consumer_key,
+							config.twitter_consumer_secret,
+							config.twitter_access_token_key,
+							config.twitter_access_token_secret,
+							config.bitly_access_token)
+		logging.info('Tweeting listings')
+		for listing in parser.listings:
+			logging.info('Tweeting listing with title %s', listing[0])
+			tweeter.send_tweet(listing)
+	else:
+		logging.info('No results found')
+	logging.info('Updating last run time')
 	config.set_last_run()
+	logging.info('Saving updated config to config.json')
 	config.save()
+	logging.info('All done!')
 
 if __name__ == '__main__':
 	main()
