@@ -55,7 +55,12 @@ class EbayParser():
 		for raw_listing in raw_listings:
 			title = raw_listing['title'][0]
 			price = raw_listing['sellingStatus'][0]['convertedCurrentPrice'][0]['__value__']
-			image_url = raw_listing['pictureURLLarge'][0]
+			if 'pictureURLLarge' in raw_listing:
+				image_url = raw_listing['pictureURLLarge'][0]
+			elif 'galleryURL' in raw_listing:
+				image_url = raw_listing['galleryURL'][0]
+			else:
+				image_url = None
 			item_url = raw_listing['viewItemURL'][0]
 			self.listings.append((title, price, image_url, item_url))
 
