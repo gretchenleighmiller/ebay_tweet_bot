@@ -1,16 +1,26 @@
 {
+    "bitly_token": "$BITLY_ACCESS_TOKEN",
     "ebay_api_app_id": "$EBAY_API_APP_ID",
     "last_run": "ISO 8601 datetime in UTC",
     "search_profile": {
-        "category": "139973",
+        "categories": [
+            "139973",
+            "54968",
+            "38583"
+        ],
         "filters": [
             {
                 "name": "MinPrice",
                 "value": "100"
+            },
+            {
+                "name": "MaxPrice",
+                "value": "500"
             }
         ],
         "output_selectors": [
-            "PictureURLLarge"
+            "PictureURLLarge",
+            "PictureURLSuperSize"
         ],
         "search_terms": [
             {
@@ -32,6 +42,5 @@
         "access_token_secret": "$TWITTER_ACCESS_TOKEN_SECRET",
         "consumer_key": "$TWITTER_CONSUMER_KEY",
         "consumer_secret": "$TWITTER_CONSUMER_SECRET"
-    },
-    "bitly_token": "$BITLY_ACCESS_TOKEN"
+    }
 }

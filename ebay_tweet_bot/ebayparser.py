@@ -23,20 +23,21 @@ class EbayParser():
 		self.listings = []
 
 	def make_payload(self):
+		categories = self.search_profile['categories']
 		filters = self.search_profile['filters']
-		search_terms = self.search_profile['search_terms']
 		output_selectors = self.search_profile['output_selectors']
+		search_terms = self.search_profile['search_terms']
 		keywords = ''
-		self.payload.append(('categoryId', self.search_profile['category']))
-		# multiple itemFilter parameters require a 0-indexed counter
+		# multiple parameters of the same type are differentiated by a 0-indexed counter
+		for i, category in enumerate(categories):
+			self.payload.append(('categoryId(' + str(i) + ')', category))
 		self.payload.append(('itemFilter(0).name', 'StartTimeFrom'))
 		self.payload.append(('itemFilter(0).value', self.start_time_from))
 		for i, item_filter in enumerate(filters):
 			self.payload.append(('itemFilter(' + str(i + 1) + ').name', item_filter['name']))
 			self.payload.append(('itemFilter(' + str(i + 1) + ').value',item_filter['value']))
-		for output_selector in output_selectors:
-			self.payload.append(('outputSelector', output_selector))
-		
+		for i, output_selector in enumerate(output_selectors):
+			self.payload.append(('outputSelector(' + str(i) + ')', output_selector))
 		for search_term in search_terms:
 			if search_term['clause']=='all':
 				keywords += search_term['keywords']
@@ -58,7 +59,9 @@ class EbayParser():
 		for raw_listing in raw_listings:
 			title = raw_listing['title'][0]
 			price = raw_listing['sellingStatus'][0]['convertedCurrentPrice'][0]['__value__']
-			if 'pictureURLLarge' in raw_listing:
+			if 'pictureURLSuperSize' in raw_listing:
+				image_url = raw_listing['pictureURLSuperSize'][0]
+			elif 'pictureURLLarge' in raw_listing:
 				image_url = raw_listing['pictureURLLarge'][0]
 			elif 'galleryURL' in raw_listing:
 				image_url = raw_listing['galleryURL'][0]
