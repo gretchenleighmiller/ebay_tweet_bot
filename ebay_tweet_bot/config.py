@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import json
+import json, logging
 from datetime import datetime
 
 class Config():
@@ -18,9 +18,12 @@ class Config():
 	def load(self):
 		config_dict = {}
 
-		with open(self.json_file, mode='r', encoding='utf-8') as f:
-			config_dict = json.load(f)
-
+		try:
+			with open(self.json_file, mode='r', encoding='utf-8') as f:
+				config_dict = json.load(f)
+		except Exception as e:
+			logging.error(e)
+			return
 		self.ebay_api_app_id = config_dict['ebay_api_app_id']
 		self.search_profile = config_dict['search_profile']
 		self.twitter_consumer_key = config_dict['twitter_api_config']['consumer_key']
@@ -46,6 +49,10 @@ class Config():
 			'last_run': self.last_run,
 			'bitly_access_token': self.bitly_access_token
 		}
-
-		with open(self.json_file, mode='w', encoding='utf-8') as f:
-			f.write(json.dumps(config_dict, indent=4, sort_keys=True))
+		try:
+			with open(self.json_file, mode='w', encoding='utf-8') as f:
+				f.write(json.dumps(config_dict, indent=4, sort_keys=True))
+		except Exception as e:
+			logging.error(e)
+			logging.warning('Could not save config.json file')
+			return

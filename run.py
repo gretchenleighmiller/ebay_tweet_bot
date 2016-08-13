@@ -13,6 +13,10 @@ def main():
 	logging.info('Starting')
 	logging.info('Loading config from config.json')
 	config = Config(config_file_path)
+	if len(config.search_profile)==0:
+		logging.info('Search profile not present')
+		logging.info('Exiting without finishing')
+		return
 	logging.info('Constructing eBay API parser from config')
 	parser = EbayParser(config)
 	parser.make_payload()
