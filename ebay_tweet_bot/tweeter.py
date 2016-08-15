@@ -28,6 +28,6 @@ class Tweeter():
 		short_item_url = requests.get(self.BITLY_API_BASE_URL, params=bitly_params).text
 		message = '%s – $%.2f %s' % (title, price, short_item_url)
 		if item_url:
-			self.api.PostUpdate(message, media=image_url)
+			return self.api.PostUpdate(message, media=image_url)
 		else:
-			self.api.PostUpdate(message)
+			return self.api.PostUpdate(message)

@@ -1,5 +1,5 @@
 {
-    "bitly_token": "$BITLY_ACCESS_TOKEN",
+    "bitly_access_token": "$BITLY_ACCESS_TOKEN",
     "ebay_api_app_id": "$EBAY_API_APP_ID",
     "last_run": "ISO 8601 datetime in UTC",
     "search_profile": {

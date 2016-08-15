@@ -1,0 +1,13 @@
+{
+    "bitly_access_token": "$BITLY_ACCESS_TOKEN",
+    "ebay_api_app_id": "$EBAY_API_APP_ID",
+    "last_run": "ISO 8601 datetime in UTC",
+    "search_profile": {
+    },
+    "twitter_api_config": {
+        "access_token_key": "$TWITTER_ACCESS_TOKEN_KEY",
+        "access_token_secret": "$TWITTER_ACCESS_TOKEN_SECRET",
+        "consumer_key": "$TWITTER_CONSUMER_KEY",
+        "consumer_secret": "$TWITTER_CONSUMER_SECRET"
+    }
+}
