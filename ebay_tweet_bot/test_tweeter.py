@@ -22,8 +22,8 @@ class TweeterTest(unittest.TestCase):
 		self.assertIsNotNone(tweet_status.id)
 		self.assertIn(listing_with_image[0], tweet_status.text)
 		self.assertIsNotNone(tweet_status.media)
-		self.assertEquals(len(tweet_status.media), 1)
-		self.assertEquals(tweet_status.media[0].type, 'photo')
+		self.assertEqual(len(tweet_status.media), 1)
+		self.assertEqual(tweet_status.media[0].type, 'photo')
 
 	def testTweetWithoutImage(self):
 		listing_without_image = ('Test Tweet Without Image ' + datetime.utcnow().isoformat(), 88.88, None, 'http://www.ebay.com')
