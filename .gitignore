@@ -5,3 +5,4 @@ env/
 config.json
 ebay_categories_report.txt
 ebay_twitterbot.log
+test_config.json
