@@ -14,15 +14,15 @@ JSON Config
 - ebay_api_app_id: Your eBay API App ID.
 - bitly_access_token: Your Bitly acess token.
 - twitter_api_config: Twitter API credentials.
-	- access_token_key: Your Twitter Access Token Key.
-	- access_token_secret: Your Twitter Access Token Secret.
-	- consumer_key: Your Twitter Consumer API key.
-	- consumer_secret: Your Twitter Consumer API secret.
+ - access_token_key: Your Twitter Access Token Key.
+ - access_token_secret: Your Twitter Access Token Secret.
+ - consumer_key: Your Twitter Consumer API key.
+ - consumer_secret: Your Twitter Consumer API secret.
 - search_profile: The eBay search profile.
-	- categories: A JSON array of up to three eBay Categories.
-	- filters: A JSON array of JSON objects with "name" and "value" keys for each filter.
-	- output_selectors: A JSON array of output selectors.
-	- search_terms: A JSON array of JSON objects with "clause" and "keywords" keys. Allowed clauses are "all", "any", and "not". Keywords must be comma-separated.
+ - categories: A JSON array of up to three eBay Categories.
+ - filters: A JSON array of JSON objects with "name" and "value" keys for each filter.
+ - output_selectors: A JSON array of output selectors.
+ - search_terms: A JSON array of JSON objects with "clause" and "keywords" keys. Allowed clauses are "all", "any", and "not". Keywords must be comma-separated.
 - last_run: An ISO 8601 timestamp representing the last time the bot was run. This will be updated automatically after the initial run.
 
 For an eBay search you must have either one category or one search term.
