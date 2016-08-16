@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import json, logging
-from datetime import datetime
 
 class Config():
 	def __init__(self, json_file):
@@ -33,8 +32,8 @@ class Config():
 		self.bitly_access_token = config_dict['bitly_access_token']
 		self.last_run = config_dict['last_run']
 
-	def set_last_run(self):
-		self.last_run = datetime.utcnow().isoformat()
+	def set_last_run(self, time):
+		self.last_run = time
 
 	def save(self):
 		config_dict = {

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging, sys, os
+from datetime import datetime
 from ebay_tweet_bot import Config, EbayParser, Tweeter
 
 def main():
@@ -38,7 +39,7 @@ def main():
 	else:
 		logging.info('No results found')
 	logging.info('Updating last run time')
-	config.set_last_run()
+	config.set_last_run(datetime.utcnow().isoformat())
 	logging.info('Saving updated config to config.json')
 	config.save()
 	logging.info('All done!')

@@ -24,7 +24,7 @@ class ConfigTester(unittest.TestCase):
 		self.assertIsNotNone(self.config.bitly_access_token)
 
 	def testSaveLastRunTime(self):
-		self.config.last_run = (datetime.utcnow()-timedelta(hours=12)).isoformat()
+		self.config.set_last_run((datetime.utcnow()-timedelta(hours=12)).isoformat())
 		old_last_run = self.config.last_run
 		self.config.save()
 		self.config.load()
