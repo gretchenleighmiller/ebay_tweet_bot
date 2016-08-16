@@ -1,7 +1,7 @@
 {
     "bitly_access_token": "$BITLY_ACCESS_TOKEN",
     "ebay_api_app_id": "$EBAY_API_APP_ID",
-    "last_run": "ISO 8601 datetime in UTC",
+    "last_run": "2016-08-16T00:59:09.085143",
     "search_profile": {
         "categories": [
             "139973",
@@ -25,15 +25,15 @@
         "search_terms": [
             {
                 "clause": "all",
-                "keywords": "all the keywords must match"
+                "keywords": "all, these, must, exist"
             },
             {
                 "clause": "any",
-                "keywords": "any of the keywords can match"
+                "keywords": "any, of, these, can, exist"
             },
             {
                 "clause": "not",
-                "keywords": "none of the keywords can match"
+                "keywords": "none, of, these, must, exist"
             }
         ]
     },
