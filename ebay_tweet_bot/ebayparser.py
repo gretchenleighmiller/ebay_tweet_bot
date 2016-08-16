@@ -30,21 +30,21 @@ class EbayParser():
 		keywords = ''
 		# multiple parameters of the same type are differentiated by a 0-indexed counter
 		for i, category in enumerate(categories):
-			self.payload.append(('categoryId(' + str(i) + ')', category))
+			self.payload.append(('categoryId({!s})'.format(i), category))
 		self.payload.append(('itemFilter(0).name', 'StartTimeFrom'))
 		self.payload.append(('itemFilter(0).value', self.start_time_from))
-		for i, item_filter in enumerate(filters):
-			self.payload.append(('itemFilter(' + str(i + 1) + ').name', item_filter['name']))
-			self.payload.append(('itemFilter(' + str(i + 1) + ').value',item_filter['value']))
+		for i, item_filter in enumerate(filters, start=1):
+			self.payload.append(('itemFilter({!s}).name'.format(i), item_filter['name']))
+			self.payload.append(('itemFilter({!s}).value'.format(i), item_filter['value']))
 		for i, output_selector in enumerate(output_selectors):
-			self.payload.append(('outputSelector(' + str(i) + ')', output_selector))
+			self.payload.append(('outputSelector({!s})'.format(i), output_selector))
 		for search_term in search_terms:
 			if search_term['clause']=='all':
 				keywords += search_term['keywords']
 			if search_term['clause']=='any':
-				keywords += '(%s)' % (search_term['keywords'])
+				keywords += '({})'.format(search_term['keywords'])
 			if search_term['clause']=='not':
-				keywords += '-(%s)' % (search_term['keywords'])
+				keywords += '-({})'.format(search_term['keywords'])
 			keywords += ' '
 		self.payload.append(('keywords', keywords.strip()))
 

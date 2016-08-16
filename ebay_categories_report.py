@@ -32,7 +32,7 @@ def recurse_ebay_categories_from_api(payload, report='EBAY CATEGORY REPORT \n', 
 	for result in results:
 		print(result['CategoryName'])
 		tabs = '\t' * result['CategoryLevel']
-		report += '%s%s (%s)\n' % (tabs, result['CategoryName'], result['CategoryID'])
+		report += '{0}{1} ({2})\n'.format(tabs, result['CategoryName'], result['CategoryID'])
 		if result['LeafCategory'] is False:
 			report = recurse_ebay_categories_from_api(payload, report, result['CategoryID'], categories)
 	return report
