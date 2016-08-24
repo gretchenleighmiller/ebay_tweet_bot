@@ -1,6 +1,9 @@
 # Include MIT license
 include LICENSE.txt
 
+# Include requirements
+include requirements.txt
+
 # Include sample config
 include config.sample.json
 
