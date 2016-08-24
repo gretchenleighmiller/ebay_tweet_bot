@@ -1,0 +1,14 @@
+# Include MIT license
+include LICENSE.txt
+
+# Include sample config
+include config.sample.json
+
+# Include scripts
+include ebay_categories_report.py
+include run.py
+include tests.py
+
+# Include test data
+include test_data/test_config.sample.json
+include test_data/Testcard_F.jpg
