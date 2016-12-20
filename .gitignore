@@ -1,5 +1,7 @@
 __pycache__/
 *.py[cod]
+*.sublime-project
+*.sublime-workspace
 .DS_Store
 env/
 config.json
