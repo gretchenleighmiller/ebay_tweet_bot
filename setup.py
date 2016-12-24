@@ -30,8 +30,14 @@ setup(
     install_requires=[
         'future>=0.15.2',
         'oauthlib>=1.1.2',
+        'pymongo==3.4.0',
         'python-twitter>=3.1',
         'requests>=2.10.0',
         'requests-oauthlib>=0.6.2'
-    ]
+    ],
+    entry_points={
+        'console_scripts': [
+            'ebay_tweet_bot=ebay_tweet_bot.cli:main'
+        ]
+    },
 )

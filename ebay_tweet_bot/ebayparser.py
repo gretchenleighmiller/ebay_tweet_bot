@@ -14,12 +14,12 @@ class EbayParser():
         self.payload = [
             ('OPERATION-NAME', self.OPERATION_NAME),
             ('SERVICE-VERISON', self.SERVICE_VERSION),
-            ('SECURITY-APPNAME', config['ebay_api_app_id']),
+            ('SECURITY-APPNAME', config.ebay_api_app_id),
             ('RESPONSE-DATA-FORMAT', self.RESPONSE_FORMAT),
             ('REST-PAYLOAD', 'true')
         ]
-        self.search_profile = config['search_profile']
-        self.start_time_from = config['last_run']
+        self.search_profile = config.search_profile
+        self.start_time_from = config.last_run
         self.response = None
         self.listings = []
 
