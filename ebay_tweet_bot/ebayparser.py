@@ -3,7 +3,7 @@ import requests
 
 
 class EbayParser():
-    FINDING_BASE_URL = 'http://svcs.ebay.com/services/search/FindingService/v1'
+    FINDING_BASE_URL = 'https://svcs.ebay.com/services/search/FindingService/v1'
     SERVICE_VERSION = '1.0.0'
     OPERATION_NAME = 'findItemsAdvanced'
     RESPONSE_FORMAT = 'JSON'

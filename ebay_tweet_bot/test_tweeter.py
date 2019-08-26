@@ -27,7 +27,7 @@ class TweeterTest(unittest.TestCase):
             os.path.join(
                 self.dir_path,
                 'Testcard_F.jpg'),
-            'http://www.ebay.com'
+            'https://www.ebay.com'
         )
         tweet_status = self.tweeter.send_tweet(listing_with_image)
         self.assertIsNotNone(tweet_status.id)
@@ -41,7 +41,7 @@ class TweeterTest(unittest.TestCase):
             'Test Tweet Without Image ' + datetime.utcnow().isoformat(),
             88.88,
             None,
-            'http://www.ebay.com'
+            'https://www.ebay.com'
         )
         tweet_status = self.tweeter.send_tweet(listing_without_image)
         self.assertIsNotNone(tweet_status.id)
